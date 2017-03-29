@@ -1,7 +1,11 @@
 <template>
     <ul class="news-list">
-        <li v-for="(item, index) in news">
-            {{ item.author }} - {{ item.description }}
+        <li v-for="(article, index) in news">
+            <img :src="article.urlToImage"/>
+            {{article.publishedAt}} - {{ article.author }}
+
+            <a :href="article.url"><h2>{{article.title}}</h2></a>
+            <p>{{ article.description }}</p>
         </li>
     </ul>
 </template>
@@ -24,7 +28,8 @@
             window.fetch(`https://newsapi.org/v1/articles?source=techcrunch&apiKey=${config.apiKey}`)
                 .then(response => response.json())
                 .then(response => {
-                    self.news = response.articles;
+                    console.log('resp', response)
+                    self.news = response.articles
                 });
         }
     }
