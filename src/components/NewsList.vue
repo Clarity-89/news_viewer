@@ -9,7 +9,7 @@
                 {{article.publishedAt | time}} - {{ article.author }}
 
             <a :href="article.url">
-                <h2 class="mdl-card__title-text">{{article.title}}</h2>
+                <h3 class="mdl-card__title-text">{{article.title}}</h3>
             </a>
 
                 <div class="mdl-card__supporting-text">
@@ -67,7 +67,7 @@
     .news-list {
         padding: 10em;
 
-        column-count: 4;
+        column-count: 1;
         column-gap: 0;
 
         .mdl-card__wrapper {
@@ -86,13 +86,41 @@
                         height: $img-height * 1.5;
                     }
                 }
+                
+                a {
+                    text-decoration: none;
+                }
+                
+                .mdl-card {
+                    &__actions {
+                        position: absolute;
+                        bottom: 0;
+                        height: 50px;
+                    }
 
-                .mdl-card__actions {
-                    position: absolute;
-                    bottom: 0;
-                    height: 50px;
+                    &__title-text {
+                        color: #000;
+                        font-size: 1.2em;
+                    }
                 }
             }
+        }
+    }
+
+    @media (min-width: 768px) {
+        .news-list {
+            column-count: 2;
+        }
+    }
+    @media (min-width: 1200px) {
+        .news-list {
+            column-count: 3;
+        }
+    }
+
+    @media (min-width: 1600px) {
+        .news-list {
+            column-count: 4;
         }
     }
 </style>
