@@ -41,7 +41,7 @@
 
         methods: {
             tallClass(index) {
-                return index % 2 === 0 ? 'tall' : '';
+                return index % 2 === 0 ? '' : '';
             }
         },
 
@@ -55,10 +55,7 @@
             let self = this;
             window.fetch(`https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=${config.apiKey}`)
                 .then(response => response.json())
-                .then(response => {
-                    console.log('resp', response)
-                    self.news = response.articles
-                });
+                .then(response => self.news = response.articles);
         }
     }
 </script>
@@ -69,7 +66,6 @@
 
     .news-list {
         padding: 10em;
-
 
         column-count: 4;
         column-gap: 0;
