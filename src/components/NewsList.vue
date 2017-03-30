@@ -5,11 +5,12 @@
             <div class="mdl-card__media cover" v-bind:class="tallClass(index)"
                  v-bind:style="{'background-image': 'url('+ article.urlToImage +')'}"></div>
 
-            {{article.publishedAt}} - {{ article.author }}
+            {{article.publishedAt|time}} - {{ article.author }}
 
             <a :href="article.url">
-            <h2 class="mdl-card__title-text">{{article.title}}</h2>
-        </a>
+                <h2 class="mdl-card__title-text">{{article.title}}</h2>
+            </a>
+
             <div class="mdl-card__supporting-text">
                 <p>{{ article.description }}</p>
             </div>
@@ -25,7 +26,7 @@
 
 <script>
     import {config} from '../../config/local.env.js';
-
+    import moment from 'moment';
     export default {
         name: 'news-list',
 
@@ -42,9 +43,15 @@
             }
         },
 
+        filters: {
+            time(value) {
+                return moment(value).format('D.MM.YYYY');
+            }
+        },
+
         created() {
             let self = this;
-            window.fetch(`https://newsapi.org/v1/articles?source=techcrunch&apiKey=${config.apiKey}`)
+            window.fetch(`https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=${config.apiKey}`)
                 .then(response => response.json())
                 .then(response => {
                     console.log('resp', response)
@@ -62,6 +69,7 @@
         padding: 0 7em;
         .mdl-card__custom {
             margin-bottom: 1em;
+            padding-bottom: 50px;
 
             .cover {
                 width: auto;
@@ -71,6 +79,12 @@
                 &.tall {
                     height: $img-height * 1.5;
                 }
+            }
+
+            .mdl-card__actions {
+                position: absolute;
+                bottom: 0;
+                height: 50px;
             }
         }
 

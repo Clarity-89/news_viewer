@@ -11,7 +11,7 @@ function resolve(dir) {
 module.exports = {
     entry: {
         app: './src/main.js',
-        vendor: 'material-design-lite'
+        vendor: ['material-design-lite', 'moment']
     },
     output: {
         path: config.build.assetsRoot,
