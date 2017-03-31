@@ -71,7 +71,7 @@
         column-gap: 0;
 
         .mdl-card__wrapper {
-            break-inside: avoid-column;
+            break-inside: avoid;
 
             .mdl-card__custom {
                 margin-bottom: 1em;
@@ -89,6 +89,12 @@
                 
                 a {
                     text-decoration: none;
+
+                    &:hover {
+                        cursor: pointer;
+                        text-decoration: underline;
+                        color: #000;
+                    }
                 }
                 
                 .mdl-card {

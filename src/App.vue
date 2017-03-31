@@ -19,13 +19,40 @@
 <style lang="scss">
     @import "../node_modules/material-design-lite/material.min.css";
 
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+
+    body, #app::before {
+        background: url("http://i.imgur.com/fNKwItH.jpg") 0 / cover fixed;
+        /*width: 102%;*/
+        /*height: 102%;*/
+    }
+
     #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
+        /*height: 115%;*/
+        /*width: 115%;*/
+
+        position: relative;
+        //overflow: auto;
+
+        &::before {
+            margin: -30px;
+            // background: url("http://i.imgur.com/fNKwItH.jpg") 0 / cover fixed;
+            content: '';
+            position: fixed;
+            top: -2%;
+            right: -2%;
+            left: -2%;
+            bottom: -2%;
+            -webkit-filter: blur(20px);
+            -moz-filter: blur(20px);
+            -o-filter: blur(20px);
+            -ms-filter: blur(20px);
+            filter: blur(20px);
+            z-index: -1;
+        }
     }
 
     li {
