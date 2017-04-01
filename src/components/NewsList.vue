@@ -6,19 +6,23 @@
                 <div class="mdl-card__media cover" v-bind:class="tallClass(index)"
                      v-bind:style="{'background-image': 'url('+ article.urlToImage +')'}"></div>
 
-                {{article.publishedAt | time}} - {{ article.author }}
+                <div class="mdl-card__content">
+                    <p class="mdl-card__date">{{article.publishedAt | time}}</p>
+                    <p class="mdl-card__author">{{ article.author }}</p>
 
-            <a :href="article.url">
-                <h3 class="mdl-card__title-text">{{article.title}}</h3>
-            </a>
+                    <a :href="article.url">
+                        <h3 class="mdl-card__title-text">{{article.title}}</h3>
+                    </a>
 
-                <div class="mdl-card__supporting-text">
-                    <p>{{ article.description }}</p>
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        View Updates
-                      </a>
+                    <div class="mdl-card__supporting-text">
+                        <p>{{ article.description }}</p>
+                    </div>
+
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            View Updates
+                          </a>
+                    </div>
                 </div>
             </div>
         </li>
@@ -47,7 +51,8 @@
 
         filters: {
             time(value) {
-                return moment(value).format('D.MM.YYYY');
+                value = value || new Date();
+                return moment(value).format('D MMM YYYY');
             }
         },
 
@@ -86,7 +91,7 @@
                         height: $img-height * 1.5;
                     }
                 }
-                
+
                 a {
                     text-decoration: none;
 
@@ -96,7 +101,7 @@
                         color: #000;
                     }
                 }
-                
+
                 .mdl-card {
                     &__actions {
                         position: absolute;
@@ -108,6 +113,14 @@
                         color: #000;
                         font-size: 1.2em;
                     }
+
+                    &__title-text, &__author, &__date {
+                        padding: 0 16px;
+                    }
+
+                    &__date {
+                        margin: 10px auto;
+                    }
                 }
             }
         }
@@ -118,6 +131,7 @@
             column-count: 2;
         }
     }
+
     @media (min-width: 1200px) {
         .news-list {
             column-count: 3;
@@ -127,6 +141,12 @@
     @media (min-width: 1600px) {
         .news-list {
             column-count: 4;
+        }
+    }
+
+    @media (min-width: 1980px) {
+        .news-list {
+            column-count: 5;
         }
     }
 </style>

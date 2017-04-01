@@ -20,7 +20,7 @@
     @import "../node_modules/material-design-lite/material.min.css";
 
     body, #app::before {
-        background: url("http://i.imgur.com/fNKwItH.jpg") 0 / cover;
+        background: url("assets/background.jpg") 0 / cover;
     }
 
     #app {
