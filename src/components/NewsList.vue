@@ -70,7 +70,7 @@
     $img-height: 320px;
 
     .news-list {
-        padding: 10em;
+        padding: 0 10em;
 
         column-count: 1;
         column-gap: 0;

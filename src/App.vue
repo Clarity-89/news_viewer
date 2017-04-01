@@ -1,6 +1,39 @@
 <template>
     <div id="app">
-        <NewsList></NewsList>
+        <div class="mdl-layout mdl-js-layout">
+            <header class="mdl-layout__header mdl-layout__header--transparent">
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title">Title</span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation -->
+                    <nav class="mdl-navigation">
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                    </nav>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">Title</span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                </nav>
+            </div>
+            <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button">
+                <i class="material-icons"></i>
+            </div>
+            <main class="mdl-layout__content">
+                <NewsList></NewsList>
+            </main>
+        </div>
+
+       
     </div>
 </template>
 
@@ -21,6 +54,10 @@
 
     body, #app::before {
         background: url("assets/background.jpg") 0 / cover;
+    }
+
+    .mdl-layout__container {
+        position: static;
     }
 
     #app {
