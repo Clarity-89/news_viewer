@@ -61,6 +61,10 @@
             window.fetch(`https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=${config.apiKey}`)
                 .then(response => response.json())
                 .then(response => self.news = response.articles);
+
+            window.fetch(`https://newsapi.org/v1/sources?Key=${config.apiKey}`)
+                .then(response => response.json())
+                .then(response => self.sources = response.sources);
         }
     }
 </script>
@@ -79,7 +83,7 @@
             break-inside: avoid;
 
             .mdl-card__custom {
-                margin-bottom: 1em;
+                margin-bottom: 2em;
                 padding-bottom: 50px;
 
                 .cover {
