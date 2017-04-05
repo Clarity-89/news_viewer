@@ -1,20 +1,16 @@
 <template>
     <div class="mdl-layout__drawer mdl-layout__drawer--custom">
-        <span class="mdl-layout-title">Filter</span>
-        <nav class="mdl-navigation">
-            <a v-for="(val, key) in filters" class="mdl-navigation__link" href="">
-                <p>Sort by: {{key}}</p>
-                <button id="demo-menu-lower-left"
-                        class="mdl-button mdl-js-button mdl-button--icon">
-                    <i class="material-icons">more_vert</i>
-                </button>
-                <p v-for="(v, k) in val" class="mdl-menu__item">{{k}}</p>
-                <!--<ul class="mdl-menu mdl-menu&#45;&#45;bottom-left mdl-js-menu mdl-js-ripple-effect"-->
-                    <!--for="demo-menu-lower-left">-->
-                    <!--<li v-for="(v, k) in val" class="mdl-menu__item">{{k}}</li>-->
-                <!--</ul>-->
-            </a>
-        </nav>
+        <span class="mdl-layout-title">Sort by:</span>
+        <ul class="collapsible" data-collapsible="accordion">
+            <li v-for="(val, key) in filters">
+                <div class="collapsible-header">{{key}}</div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li v-for="(v, k) in filters[key]">{{k}}</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -38,7 +34,6 @@
                         filters[filter][el[filter]].push(el.id)
                     });
                 }
-                console.log('filters', filters);
                 this.filters = filters;
             }
         },
@@ -52,3 +47,106 @@
         }
     }
 </script>
+
+<style lang="scss">
+    $collapsible-height: 3rem !default;
+    $collapsible-line-height: $collapsible-height !default;
+    $collapsible-header-color: #fff !default;
+    $collapsible-border-color: #ddd !default;
+    $sidenav-padding: 16px !default;
+
+    .collapsible {
+        border-top: 1px solid $collapsible-border-color;
+        border-right: 1px solid $collapsible-border-color;
+        border-left: 1px solid $collapsible-border-color;
+        margin: .5rem 0 1rem 0;
+        z-index: 6;
+
+    }
+
+    .collapsible-header {
+        display: block;
+        cursor: pointer;
+        min-height: $collapsible-height;
+        line-height: $collapsible-line-height;
+        padding: 0 1rem;
+        background-color: transparent;
+        border-bottom: 1px solid $collapsible-border-color;
+        z-index: 6;
+
+        i {
+            width: 2rem;
+            font-size: 1.6rem;
+            line-height: $collapsible-line-height;
+            display: block;
+            float: left;
+            text-align: center;
+            margin-right: 1rem;
+        }
+    }
+
+    .collapsible-body {
+        display: none;
+        border-bottom: 1px solid $collapsible-border-color;
+        box-sizing: border-box;
+        padding: 2rem;
+        z-index: 6;
+    }
+
+    // sideNav collapsible styling
+    .side-nav,
+    .side-nav.fixed {
+
+        .collapsible {
+            border: none;
+            box-shadow: none;
+
+            li {
+                padding: 0;
+            }
+        }
+
+        .collapsible-header {
+            background-color: transparent;
+            border: none;
+            line-height: inherit;
+            height: inherit;
+            padding: 0 $sidenav-padding;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, .05);
+            }
+            i {
+                line-height: inherit;
+            }
+        }
+
+        .collapsible-body {
+            border: 0;
+            background-color: $collapsible-header-color;
+
+            li a {
+                padding: 0 (7.5px + $sidenav-padding) 0 (15px + $sidenav-padding);
+            }
+        }
+
+    }
+
+    // Popout Collapsible
+
+    .collapsible.popout {
+        border: none;
+        box-shadow: none;
+        > li {
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            // transform: scaleX(.92);
+            margin: 0 24px;
+            transition: margin .35s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+        }
+        > li.active {
+            box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+            margin: 16px 0;
+            // transform: scaleX(1);
+        }
+    }
+</style>
