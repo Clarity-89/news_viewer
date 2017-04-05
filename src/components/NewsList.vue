@@ -3,7 +3,7 @@
         <li v-for="(article, index) in news"
             class="mdl-card__wrapper">
             <div class="mdl-card mdl-card__custom mdl-shadow--2dp">
-                <div class="mdl-card__media cover" v-bind:class="tallClass(index)"
+                <div class="mdl-card__media cover"
                      v-bind:style="{'background-image': 'url('+ article.urlToImage +')'}"></div>
 
                 <div class="mdl-card__content">
@@ -38,25 +38,13 @@
 
         data() {
             return {
-                news: [],
-                sources: [],
-                filters: {category: {}, name: {}, language: {}, country: {}}
+                news: []
             }
         },
 
         methods: {
             tallClass(index) {
                 return index % 2 === 0 ? '' : '';
-            },
-            constructFilters(data) {
-                let {filters} = this;
-                for (let filter of Object.keys(filters)) {
-                    data.forEach(el => {
-                        filters[filter][el[filter]] = filters[filter][el[filter]] || [];
-                        filters[filter][el[filter]].push(el.id)
-                    });
-                }
-               this.filters = filters;
             }
         },
 
@@ -72,11 +60,6 @@
             window.fetch(`https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=${config.apiKey}`)
                 .then(response => response.json())
                 .then(response => self.news = response.articles);
-
-            window.fetch(`https://newsapi.org/v1/sources?Key=${config.apiKey}`)
-                .then(response => response.json())
-                .then(response => self.sources = response.sources)
-                .then(() => self.constructFilters(self.sources));
         }
     }
 </script>

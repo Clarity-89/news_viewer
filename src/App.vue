@@ -14,15 +14,7 @@
                     </nav>
                 </div>
             </header>
-            <div class="mdl-layout__drawer mdl-layout__drawer--custom">
-                <span class="mdl-layout-title">Filter</span>
-                <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                </nav>
-            </div>
+            <sidebar></sidebar>
             <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button">
                 <i class="material-icons"></i>
             </div>
@@ -36,18 +28,20 @@
 
 <script>
     import '../node_modules/material-design-lite/material.js';
-    import NewsList from './components/NewsList.vue'
+    import NewsList from './components/NewsList.vue';
+    import Sidebar from './components/Sidebar.vue';
 
     export default {
         name: 'app',
         components: {
-            NewsList
+            NewsList, Sidebar
         }
     }
 </script>
 
 <style lang="scss">
     @import "../node_modules/material-design-lite/material.min.css";
+
     $sidebar-width: 400px;
 
     body, #app::before {
