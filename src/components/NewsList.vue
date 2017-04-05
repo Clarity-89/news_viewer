@@ -39,13 +39,24 @@
         data() {
             return {
                 news: [],
-                sources: []
+                sources: [],
+                filters: {category: {}, name: {}, language: {}, country: {}}
             }
         },
 
         methods: {
             tallClass(index) {
                 return index % 2 === 0 ? '' : '';
+            },
+            constructFilters(data) {
+                let {filters} = this;
+                for (let filter of Object.keys(filters)) {
+                    data.forEach(el => {
+                        filters[filter][el[filter]] = filters[filter][el[filter]] || [];
+                        filters[filter][el[filter]].push(el.id)
+                    });
+                }
+               this.filters = filters;
             }
         },
 
@@ -61,6 +72,11 @@
             window.fetch(`https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=${config.apiKey}`)
                 .then(response => response.json())
                 .then(response => self.news = response.articles);
+
+            window.fetch(`https://newsapi.org/v1/sources?Key=${config.apiKey}`)
+                .then(response => response.json())
+                .then(response => self.sources = response.sources)
+                .then(() => self.constructFilters(self.sources));
         }
     }
 </script>
@@ -79,7 +95,7 @@
             break-inside: avoid;
 
             .mdl-card__custom {
-                margin-bottom: 1em;
+                margin-bottom: 2em;
                 padding-bottom: 50px;
 
                 .cover {
