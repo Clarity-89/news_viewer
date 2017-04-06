@@ -3,11 +3,11 @@
         <span class="mdl-layout-title">Sort by:</span>
         <ul class="collapsible" data-collapsible="accordion">
             <li v-for="(val, key) in filters">
-                <div class="collapsible-header">{{key|cap}}</div>
-                <div class="collapsible-body">
-                    <ul>
-                        <li v-for="(v, k) in filters[key]">{{k}}</li>
-                    </ul>
+                <div class="collapsible-header" :class="{active: isActive(key)}" v-on:click="switchActive(key)">
+                    {{key | cap}}
+                </div>
+                <div v-bind="val" class="collapsible-body">
+                    <p v-for="(v, k) in filters[key]">{{k | cap}}</p>
                 </div>
             </li>
         </ul>
@@ -18,10 +18,12 @@
     import {config} from '../../config/local.env.js';
     export default {
         name: 'sidebar',
+
         data() {
             return {
                 sources: [],
-                filters: {category: {}, name: {}, language: {}, country: {}}
+                filters: {category: {}, name: {}, language: {}, country: {}},
+                active: ''
             }
         },
 
@@ -35,13 +37,22 @@
                     });
                 }
                 this.filters = filters;
+            },
+
+            switchActive(e) {
+                console.log('switching', key)
+                this.active = key;
+            },
+
+            isActive(key) {
+                return key === this.active;
             }
         },
 
         filters: {
-          cap(str) {
-              return str[0].toUpperCase() + str.slice(1, str.length);
-          }
+            cap(str) {
+                return str[0].toUpperCase() + str.slice(1, str.length);
+            }
         },
 
         created() {
@@ -99,6 +110,10 @@
         box-sizing: border-box;
         padding: 2rem;
         z-index: 6;
+
+        .active {
+            display: block;
+        }
     }
 
     // sideNav collapsible styling
