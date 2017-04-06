@@ -3,7 +3,7 @@
         <span class="mdl-layout-title">Sort by:</span>
         <ul class="collapsible" data-collapsible="accordion">
             <li v-for="(val, key) in filters">
-                <div class="collapsible-header">{{key}}</div>
+                <div class="collapsible-header">{{key|cap}}</div>
                 <div class="collapsible-body">
                     <ul>
                         <li v-for="(v, k) in filters[key]">{{k}}</li>
@@ -38,6 +38,12 @@
             }
         },
 
+        filters: {
+          cap(str) {
+              return str[0].toUpperCase() + str.slice(1, str.length);
+          }
+        },
+
         created() {
             let self = this;
             window.fetch(`https://newsapi.org/v1/sources?Key=${config.apiKey}`)
@@ -61,7 +67,9 @@
         border-left: 1px solid $collapsible-border-color;
         margin: .5rem 0 1rem 0;
         z-index: 6;
-
+        padding: 0;
+        border-right: none;
+        border-left: none;
     }
 
     .collapsible-header {
