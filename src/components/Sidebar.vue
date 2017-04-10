@@ -3,7 +3,7 @@
         <span class="mdl-layout-title">Sort by:</span>
         <ul class="collapsible" data-collapsible="accordion">
             <li v-for="(val, key) in filters">
-                <div class="collapsible-header" :class="{active: isActive(key)}" v-on:click="switchActive(key)">
+                <div class="collapsible-header" v-bind:class="{active: isActive}" v-on:click="switchActive(key)">
                     {{key | cap}}
                 </div>
                 <div v-bind="val" class="collapsible-body">
@@ -39,8 +39,7 @@
                 this.filters = filters;
             },
 
-            switchActive(e) {
-                console.log('switching', key)
+            switchActive(key) {
                 this.active = key;
             },
 
