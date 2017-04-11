@@ -70,9 +70,9 @@
 
     .news-list {
         padding: 0 10em;
-
-        column-count: 1;
-        column-gap: 0;
+        columns: 6 330px;
+        column-gap: 25px;
+        column-fill: auto;
 
         .mdl-card__wrapper {
             break-inside: avoid;
@@ -122,30 +122,6 @@
                     }
                 }
             }
-        }
-    }
-
-    @media (min-width: 768px) {
-        .news-list {
-            column-count: 2;
-        }
-    }
-
-    @media (min-width: 1200px) {
-        .news-list {
-            column-count: 3;
-        }
-    }
-
-    @media (min-width: 1600px) {
-        .news-list {
-            column-count: 4;
-        }
-    }
-
-    @media (min-width: 1980px) {
-        .news-list {
-            column-count: 5;
         }
     }
 </style>
