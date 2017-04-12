@@ -27,7 +27,6 @@
             </div>
         </li>
     </ul>
-
 </template>
 
 <script>
@@ -65,7 +64,6 @@
 </script>
 
 <style lang="scss">
-
     $img-height: 320px;
 
     .news-list {

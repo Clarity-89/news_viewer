@@ -2,19 +2,13 @@
     <div class="mdl-layout__drawer mdl-layout__drawer--custom">
         <span class="mdl-layout-title">Sort by:</span>
         <ul class="collapsible" data-collapsible="accordion">
-            <li v-for="(val, key) in filters">
-                <div class="collapsible-header" v-bind:class="{active: isActive}" v-on:click="switchActive(key)">
-                    {{key | cap}}
-                </div>
-                <div v-bind="val" class="collapsible-body">
-                    <p v-for="(v, k) in filters[key]">{{k | cap}}</p>
-                </div>
-            </li>
+            <collapsible v-for="(val, key) in filters" v-bind:category="key" v-bind:content="val"></collapsible>
         </ul>
     </div>
 </template>
 
 <script>
+    import Collapsible from 'Collapsible.vue';
     import {config} from '../../config/local.env.js';
     export default {
         name: 'sidebar',
