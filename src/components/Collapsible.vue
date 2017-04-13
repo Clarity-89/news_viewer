@@ -4,7 +4,9 @@
             {{category | cap}}
         </div>
         <div class="collapsible-body" v-bind:class="{active: open}">
-            <p v-for="(v, k) in content" :key="k">{{k | cap}}</p>
+            <ul class="collapsible-body__list">
+                <li v-for="(v, k) in content" :key="k">{{k | cap}}</li>
+            </ul>
         </div>
     </li>
 </template>
@@ -68,11 +70,25 @@
         display: none;
         border-bottom: 1px solid $collapsible-border-color;
         box-sizing: border-box;
-        padding: 2rem;
         z-index: 6;
+        background-color: $collapsible-body-background-color;
 
         &.active {
             display: block;
+        }
+
+        &__list {
+            padding: 0;
+
+            li {
+                padding: .7em 1.7em;
+                border-bottom: 1px solid $sidenav-border-color;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: darken($collapsible-body-background-color, 10%);
+                }
+            }
         }
     }
 </style>
