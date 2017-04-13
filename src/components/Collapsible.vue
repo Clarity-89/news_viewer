@@ -1,10 +1,10 @@
 <template>
     <li>
-        <div class="collapsible-header" v-bind:class="{active: isActive}" v-on:click="toggle(category)">
+        <div class="collapsible-header" v-on:click="toggle">
             {{category | cap}}
         </div>
-        <div class="collapsible-body">
-            <p v-for="(v, k) in content" :key="key">{{k | cap}}</p>
+        <div class="collapsible-body" v-bind:class="{active: open}">
+            <p v-for="(v, k) in content" :key="k">{{k | cap}}</p>
         </div>
     </li>
 </template>
@@ -29,12 +29,8 @@
         },
 
         methods: {
-            toggle(key) {
-                this.active = key;
-            },
-
-            isActive(key) {
-                return key === this.active;
+            toggle() {
+                this.open = !this.open;
             }
         },
 
@@ -43,6 +39,7 @@
         }
     }
 </script>
+
 <style lang="scss">
     @import "../variables";
 
@@ -74,9 +71,8 @@
         padding: 2rem;
         z-index: 6;
 
-        .active {
+        &.active {
             display: block;
         }
     }
-
 </style>
