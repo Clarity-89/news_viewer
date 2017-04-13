@@ -2,16 +2,18 @@
     <div class="mdl-layout__drawer mdl-layout__drawer--custom">
         <span class="mdl-layout-title">Sort by:</span>
         <ul class="collapsible" data-collapsible="accordion">
-            <collapsible v-for="(val, key) in filters" v-bind:category="key" v-bind:content="val"></collapsible>
+            <collapsible v-for="(val, key) in filters" v-bind:category="key" v-bind:content="val"
+                         :key="key"></collapsible>
         </ul>
     </div>
 </template>
 
 <script>
-    import Collapsible from 'Collapsible.vue';
+    import Collapsible from './Collapsible.vue';
     import {config} from '../../config/local.env.js';
     export default {
         name: 'sidebar',
+        components: {Collapsible},
 
         data() {
             return {
@@ -31,25 +33,12 @@
                     });
                 }
                 this.filters = filters;
-            },
-
-            switchActive(key) {
-                this.active = key;
-            },
-
-            isActive(key) {
-                return key === this.active;
-            }
-        },
-
-        filters: {
-            cap(str) {
-                return str[0].toUpperCase() + str.slice(1, str.length);
             }
         },
 
         created() {
             let self = this;
+
             window.fetch(`https://newsapi.org/v1/sources?Key=${config.apiKey}`)
                 .then(response => response.json())
                 .then(response => self.sources = response.sources)
@@ -59,11 +48,7 @@
 </script>
 
 <style lang="scss">
-    $collapsible-height: 3rem !default;
-    $collapsible-line-height: $collapsible-height !default;
-    $collapsible-header-color: #fff !default;
-    $collapsible-border-color: #ddd !default;
-    $sidenav-padding: 16px !default;
+    @import "../variables";
 
     .collapsible {
         border-top: 1px solid $collapsible-border-color;
@@ -74,39 +59,6 @@
         padding: 0;
         border-right: none;
         border-left: none;
-    }
-
-    .collapsible-header {
-        display: block;
-        cursor: pointer;
-        min-height: $collapsible-height;
-        line-height: $collapsible-line-height;
-        padding: 0 1rem;
-        background-color: transparent;
-        border-bottom: 1px solid $collapsible-border-color;
-        z-index: 6;
-
-        i {
-            width: 2rem;
-            font-size: 1.6rem;
-            line-height: $collapsible-line-height;
-            display: block;
-            float: left;
-            text-align: center;
-            margin-right: 1rem;
-        }
-    }
-
-    .collapsible-body {
-        display: none;
-        border-bottom: 1px solid $collapsible-border-color;
-        box-sizing: border-box;
-        padding: 2rem;
-        z-index: 6;
-
-        .active {
-            display: block;
-        }
     }
 
     // sideNav collapsible styling
