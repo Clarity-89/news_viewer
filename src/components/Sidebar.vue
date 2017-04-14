@@ -36,7 +36,7 @@
             }
         },
 
-        created() {
+        mounted() {
             let self = this;
 
             window.fetch(`https://newsapi.org/v1/sources?Key=${config.apiKey}`)

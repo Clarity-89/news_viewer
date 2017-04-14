@@ -1,32 +1,35 @@
 <template>
-    <ul class="news-list">
-        <li v-for="(article, index) in news"
-            class="mdl-card__wrapper">
-            <div class="mdl-card mdl-card__custom mdl-shadow--2dp">
-                <div class="mdl-card__media cover"
-                     v-bind:style="{'background-image': 'url('+ article.urlToImage +')'}"></div>
+    <div>
+        <ul class="news-list" v-if="!loading">
+            <li v-for="(article, index) in news"
+                class="mdl-card__wrapper">
+                <div class="mdl-card mdl-card__custom mdl-shadow--2dp">
+                    <div class="mdl-card__media cover"
+                         v-bind:style="{'background-image': 'url('+ article.urlToImage +')'}"></div>
 
-                <div class="mdl-card__content">
-                    <p class="mdl-card__date">{{article.publishedAt | time}}</p>
-                    <p class="mdl-card__author">{{ article.author }}</p>
+                    <div class="mdl-card__content">
+                        <p class="mdl-card__date">{{article.publishedAt | time}}</p>
+                        <p class="mdl-card__author">{{ article.author }}</p>
 
-                    <a :href="article.url">
-                        <h3 class="mdl-card__title-text">{{article.title}}</h3>
-                    </a>
+                        <a :href="article.url">
+                            <h3 class="mdl-card__title-text">{{article.title}}</h3>
+                        </a>
 
-                    <div class="mdl-card__supporting-text">
-                        <p>{{ article.description }}</p>
-                    </div>
+                        <div class="mdl-card__supporting-text">
+                            <p>{{ article.description }}</p>
+                        </div>
 
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                            View Updates
-                          </a>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                View Updates
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
+        <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" v-if="loading"></div>
+    </div>
 </template>
 
 <script>
@@ -37,7 +40,8 @@
 
         data() {
             return {
-                news: []
+                news: [],
+                loading: true
             }
         },
 
@@ -54,11 +58,14 @@
             }
         },
 
-        created() {
+        mounted() {
             let self = this;
             window.fetch(`https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=${config.apiKey}`)
                 .then(response => response.json())
-                .then(response => self.news = response.articles);
+                .then(response => {
+                    self.loading = false;
+                    self.news = response.articles
+                });
         }
     }
 </script>
