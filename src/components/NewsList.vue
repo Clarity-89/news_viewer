@@ -28,8 +28,8 @@
                 </div>
             </li>
         </ul>
-        <div class="loader-wrapper">
-            <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" v-if="loading"></div>
+        <div class="loader-wrapper" v-if="loading">
+            <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
         </div>
     </div>
 </template>
@@ -130,5 +130,15 @@
                 }
             }
         }
+    }
+
+    .loader-wrapper {
+        display: flex;
+        position: relative;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
     }
 </style>
