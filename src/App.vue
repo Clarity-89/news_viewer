@@ -42,8 +42,6 @@
 <style lang="scss">
     @import "../node_modules/material-design-lite/material.min.css";
 
-    $sidebar-width: 400px;
-
     body, #app::before {
         background: url("assets/background2.jpg");
     }
@@ -74,35 +72,5 @@
 
     li {
         list-style: none;
-    }
-
-    /* Custom styles for MDL sidebar */
-    .mdl-layout__drawer.mdl-layout__drawer--custom {
-        color: #fff;
-        background: none;
-        background: rgba(0, 0, 0, 0.3);
-        width: $sidebar-width;
-        -webkit-transform: translateX(-$sidebar-width);
-        transform: translateX(-$sidebar-width);
-
-        &::before {
-            content: '';
-            position: absolute;
-            background: url('http://theiphonewalls.com/wp-content/uploads/2013/05/Dark-Blue.jpg') 0 / cover;
-            top: -20px;
-            left: -20px;
-            right: 0;
-            bottom: 0;
-            width: 500px;
-            filter: blur(20px);
-        }
-
-        &.is-visible {
-            transform: translateX(0);
-        }
-    }
-
-    .mdl-layout__obfuscator.is-visible {
-        opacity: 0;
     }
 </style>

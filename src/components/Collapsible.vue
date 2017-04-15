@@ -5,13 +5,15 @@
         </div>
         <div class="collapsible-body" v-bind:class="{active: open}">
             <ul class="collapsible-body__list">
-                <li v-for="(v, k) in content" :key="k">{{k | cap}}</li>
+                <li v-for="(v, k) in content" :key="k" @click="setFilter(category, k)">{{k | cap}}</li>
             </ul>
         </div>
     </li>
 </template>
 
 <script>
+    import eventHub from '../services/eventHub';
+
     export default {
         name: 'collapsible',
         props: ['category', 'content'],
@@ -33,11 +35,15 @@
         methods: {
             toggle() {
                 this.open = !this.open;
+            },
+
+            setFilter(category, filter) {
+                eventHub.$emit('set-filter', {parent: category, filter: filter});
             }
         },
 
         created() {
-            console.log('cats', this.category, this.content)
+            // console.log('cats', this.category, this.content)
         }
     }
 </script>

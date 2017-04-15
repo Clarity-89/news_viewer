@@ -37,6 +37,8 @@
 <script>
     import {config} from '../../config/local.env.js';
     import moment from 'moment';
+    import eventHub from '../services/eventHub';
+
     export default {
         name: 'news-list',
 
@@ -50,6 +52,10 @@
         methods: {
             tallClass(index) {
                 return index % 2 === 0 ? '' : '';
+            },
+
+            getData(data) {
+                console.log('got data', data)
             }
         },
 
@@ -68,6 +74,10 @@
                     self.loading = false;
                     self.news = response.articles
                 });
+        },
+
+        created(){
+            eventHub.$on('send-list', this.getData);
         }
     }
 </script>

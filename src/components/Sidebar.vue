@@ -11,6 +11,7 @@
 <script>
     import Collapsible from './Collapsible.vue';
     import {config} from '../../config/local.env.js';
+    import eventHub from '../services/eventHub';
     export default {
         name: 'sidebar',
         components: {Collapsible},
@@ -33,6 +34,13 @@
                     });
                 }
                 this.filters = filters;
+            },
+
+            selectFilter(data) {
+                let {parent, filter} = data;
+                let filterList = this.filters[parent][filter];
+
+                eventHub.$emit('send-list', {list: filterList});
             }
         },
 
@@ -43,7 +51,12 @@
                 .then(response => response.json())
                 .then(response => self.sources = response.sources)
                 .then(() => self.constructFilters(self.sources));
+        },
+
+        created() {
+            eventHub.$on('set-filter', this.selectFilter);
         }
+
     }
 </script>
 
@@ -98,6 +111,36 @@
             }
         }
 
+    }
+
+    /* Custom styles for MDL sidebar */
+    .mdl-layout__drawer.mdl-layout__drawer--custom {
+        color: #fff;
+        background: none;
+        background: rgba(0, 0, 0, 0.3);
+        width: $sidebar-width;
+        -webkit-transform: translateX(-$sidebar-width);
+        transform: translateX(-$sidebar-width);
+
+        &::before {
+            content: '';
+            position: absolute;
+            background: url('http://theiphonewalls.com/wp-content/uploads/2013/05/Dark-Blue.jpg') 0 / cover;
+            top: -20px;
+            left: -20px;
+            right: 0;
+            bottom: 0;
+            width: 500px;
+            filter: blur(20px);
+        }
+
+        &.is-visible {
+            transform: translateX(0);
+        }
+    }
+
+    .mdl-layout__obfuscator.is-visible {
+        opacity: 0;
     }
 
     // Popout Collapsible
