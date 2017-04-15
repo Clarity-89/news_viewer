@@ -67,14 +67,17 @@
     }
 
     .collapsible-body {
-        display: none;
+        max-height: 0;
         border-bottom: 1px solid $collapsible-border-color;
         box-sizing: border-box;
         z-index: 6;
         background-color: $collapsible-body-background-color;
+        overflow: hidden;
+        transition: max-height .7s ease-in-out;
 
         &.active {
-            display: block;
+            max-height: 3000px;
+            transition: max-height .7s ease-in-out;
         }
 
         &__list {

@@ -28,7 +28,9 @@
                 </div>
             </li>
         </ul>
-        <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" v-if="loading"></div>
+        <div class="loader-wrapper">
+            <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" v-if="loading"></div>
+        </div>
     </div>
 </template>
 
