@@ -55,7 +55,24 @@
             },
 
             getData(data) {
-                console.log('got data', data)
+                let {list} = data;
+                let news = [];
+                let promises = [];
+                this.loading = true;
+
+                list.forEach(el => {
+                    let promise = window.fetch(`https://newsapi.org/v1/articles?source=${el}&apiKey=${config.apiKey}`)
+                        .then(response => response.json());
+                    promises.push(promise);
+                });
+
+                Promise.all(promises)
+                    .then(responses => {
+                        news = responses.map(resp => resp.articles);
+
+                        this.news = [].concat(...news);
+                        this.loading = false;
+                    });
             }
         },
 
