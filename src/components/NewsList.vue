@@ -21,7 +21,7 @@
 
                         <div class="mdl-card__actions mdl-card--border">
                             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                                View Updates
+                                {{article.sourceName}}
                             </a>
                         </div>
                     </div>
@@ -68,7 +68,11 @@
 
                 Promise.all(promises)
                     .then(responses => {
-                        news = responses.map(resp => resp.articles);
+                        news = responses.map(resp => {
+                            // Attach the name of the source to each article for rendering
+                            resp.articles.forEach(article => article.sourceName = resp.source);
+                            return resp.articles;
+                        });
 
                         this.news = [].concat(...news);
                         this.loading = false;
