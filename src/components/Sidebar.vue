@@ -1,6 +1,11 @@
 <template>
     <div class="mdl-layout__drawer mdl-layout__drawer--custom">
-        <span class="mdl-layout-title">Sort by:</span>
+        <span class="mdl-layout-title">Sort by:
+            <button class="mdl-button mdl-js-button mdl-button--icon close-sidebar" @click="closeSidebar">
+                <i class="material-icons">clear</i>
+            </button>
+        </span>
+
         <ul class="collapsible" data-collapsible="accordion">
             <collapsible v-for="(val, key) in filters" v-bind:category="key" v-bind:content="val"
                          :key="key"></collapsible>
@@ -20,7 +25,7 @@
             return {
                 sources: [],
                 filters: {category: {}, name: {}, language: {}, country: {}},
-                active: ''
+                open: false
             }
         },
 
@@ -41,6 +46,12 @@
                 let filterList = this.filters[parent][filter];
 
                 eventHub.$emit('send-list', {list: filterList});
+                this.closeSidebar();
+            },
+
+            closeSidebar() {
+                // Direct DOM manipulation since that's how sidebar's is-visible class is set by MDL
+                document.getElementsByClassName('mdl-layout__drawer--custom')[0].classList.remove('is-visible');
             }
         },
 
@@ -136,6 +147,12 @@
 
         &.is-visible {
             transform: translateX(0);
+        }
+
+        .close-sidebar {
+            position: absolute;
+            right: .5em;
+            top: .7em;
         }
     }
 
