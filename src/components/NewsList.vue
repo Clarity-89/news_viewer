@@ -21,7 +21,7 @@
 
                         <div class="mdl-card__actions mdl-card--border">
                             <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                               @click="filterBySource(article.sourceName)">
+                               @click.stop.prevent="filterBySource(article.sourceName)">
                                 {{article.sourceName}}
                             </a>
                         </div>
@@ -81,9 +81,9 @@
             },
 
             filterBySource(source) {
-                this.loading = true;
+               // this.loading = true;
                 this.news = this.news.filter(el => el.sourceName === source);
-                this.loading = false;
+               // this.loading = false;
             }
         },
 

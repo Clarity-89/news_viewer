@@ -133,6 +133,10 @@
         -webkit-transform: translateX(-$sidebar-width);
         transform: translateX(-$sidebar-width);
 
+        @media #{$sm-max-screen} {
+            width: 100%;
+        }
+
         &::before {
             content: '';
             position: absolute;

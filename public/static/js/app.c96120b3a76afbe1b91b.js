@@ -224,9 +224,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         filterBySource(source) {
-            this.loading = true;
+            // this.loading = true;
             this.news = this.news.filter(el => el.sourceName === source);
-            this.loading = false;
+            // this.loading = false;
         }
     },
 
@@ -524,6 +524,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect",
       on: {
         "click": function($event) {
+          $event.stopPropagation();
+          $event.preventDefault();
           _vm.filterBySource(article.sourceName)
         }
       }
@@ -653,4 +655,4 @@ const config = {
 /***/ })
 
 },[126]);
-//# sourceMappingURL=app.2a1aa15ce8be19f016c3.js.map
+//# sourceMappingURL=app.c96120b3a76afbe1b91b.js.map

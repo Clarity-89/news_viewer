@@ -50,6 +50,11 @@
         position: static;
     }
 
+    // Prevent clicking on element in mobile mode
+    .mdl-layout__obfuscator {
+        z-index: -1;
+    }
+
     .mdl-layout__drawer-button {
         i {
             color: #fff;
