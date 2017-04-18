@@ -1,6 +1,6 @@
 <template>
     <li>
-        <div class="collapsible-header" v-on:click="toggle">
+        <div class="collapsible-header" @click="toggle(category)">
             {{category | cap}}
         </div>
         <div class="collapsible-body" v-bind:class="{active: open}">
@@ -33,7 +33,8 @@
         },
 
         methods: {
-            toggle() {
+            toggle(category) {
+                console.log('got cat', category)
                 this.open = !this.open;
             },
 
