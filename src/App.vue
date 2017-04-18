@@ -50,6 +50,13 @@
         position: static;
     }
 
+    .mdl-layout__drawer-button {
+        i {
+            color: #fff;
+            font-size: 30px;
+        }
+    }
+
     #app {
         position: relative;
         overflow: hidden;

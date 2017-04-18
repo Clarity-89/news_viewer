@@ -111,10 +111,17 @@
 </script>
 
 <style lang="scss">
+    @import "../variables";
+
     $img-height: 320px;
 
     .news-list {
         padding: 0 10em;
+
+        @media #{$xs-screen} {
+            padding: 3em 1em 0;
+        }
+
         columns: 6 330px;
         column-gap: 25px;
         column-fill: auto;
@@ -125,6 +132,10 @@
             .mdl-card__custom {
                 margin-bottom: 2em;
                 padding-bottom: 50px;
+
+                @media #{$sm-max-screen} {
+                    width: 100%;
+                }
 
                 .cover {
                     width: auto;
