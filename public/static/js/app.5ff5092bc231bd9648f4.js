@@ -62,6 +62,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -551,7 +555,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "mdl-layout mdl-js-layout"
   }, [_vm._m(0), _vm._v(" "), _c('sidebar'), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('main', {
     staticClass: "mdl-layout__content"
-  }, [_c('NewsList')], 1)], 1)])
+  }, [_c('NewsList')], 1), _vm._v(" "), _vm._m(2)], 1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('header', {
     staticClass: "mdl-layout__header mdl-layout__header--transparent"
@@ -593,6 +597,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('i', {
     staticClass: "material-icons"
   }, [_vm._v("")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('footer', {
+    staticClass: "footer"
+  }, [_c('p', [_vm._v("Powered by "), _c('a', {
+    attrs: {
+      "href": "https://newsapi.org"
+    }
+  }, [_vm._v("NewsAPI.org")])])])
 }]}
 
 /***/ }),
@@ -655,4 +667,4 @@ const config = {
 /***/ })
 
 },[126]);
-//# sourceMappingURL=app.c96120b3a76afbe1b91b.js.map
+//# sourceMappingURL=app.5ff5092bc231bd9648f4.js.map

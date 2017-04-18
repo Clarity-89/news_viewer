@@ -21,6 +21,10 @@
             <main class="mdl-layout__content">
                 <NewsList></NewsList>
             </main>
+
+            <footer class="footer">
+                <p>Powered by <a href="https://newsapi.org">NewsAPI.org</a></p>
+            </footer>
         </div>
 
     </div>
@@ -84,5 +88,23 @@
 
     li {
         list-style: none;
+    }
+
+    .footer {
+        height: 50px;
+        background-color: black;
+        text-align: center;
+        color: #fff;
+        padding: 2em;
+
+        a {
+            text-decoration: none;
+            color: inherit;
+
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
     }
 </style>
