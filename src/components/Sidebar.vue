@@ -72,7 +72,7 @@
 </script>
 
 <style lang="scss">
-    @import "../variables";
+    @import "../scss/variables";
 
     .collapsible {
         border-top: 1px solid $collapsible-border-color;

@@ -30,7 +30,11 @@
             </li>
         </ul>
         <div class="loader-wrapper" v-if="loading">
-            <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+            <div class="cssload-loader">
+                <div class="cssload-inner cssload-one"></div>
+                <div class="cssload-inner cssload-two"></div>
+                <div class="cssload-inner cssload-three"></div>
+            </div>
         </div>
     </div>
 </template>
@@ -111,7 +115,8 @@
 </script>
 
 <style lang="scss">
-    @import "../variables";
+    @import "../scss/variables";
+    @import "../scss/loader";
 
     $img-height: 320px;
 

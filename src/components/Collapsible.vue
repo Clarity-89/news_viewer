@@ -50,7 +50,7 @@
 </script>
 
 <style lang="scss">
-    @import "../variables";
+    @import "../scss/variables";
 
     .collapsible-header {
         display: block;
