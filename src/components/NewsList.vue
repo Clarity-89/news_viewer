@@ -85,9 +85,9 @@
             },
 
             filterBySource(source) {
-               // this.loading = true;
+                this.loading = true;
                 this.news = this.news.filter(el => el.sourceName === source);
-               // this.loading = false;
+                this.loading = false;
             }
         },
 
@@ -129,7 +129,7 @@
 
         columns: 6 330px;
         column-gap: 25px;
-        column-fill: auto;
+        column-fill: balance;
 
         .mdl-card__wrapper {
             break-inside: avoid;
