@@ -184,6 +184,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -228,9 +232,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         filterBySource(source) {
-            // this.loading = true;
+            this.loading = true;
             this.news = this.news.filter(el => el.sourceName === source);
-            // this.loading = false;
+            this.loading = false;
         }
     },
 
@@ -536,10 +540,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                            " + _vm._s(article.sourceName) + "\n                        ")])])])])])
   })) : _vm._e(), _vm._v(" "), (_vm.loading) ? _c('div', {
     staticClass: "loader-wrapper"
+  }, [_vm._m(0)]) : _vm._e()])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cssload-loader"
   }, [_c('div', {
-    staticClass: "mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"
-  })]) : _vm._e()])
-},staticRenderFns: []}
+    staticClass: "cssload-inner cssload-one"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "cssload-inner cssload-two"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "cssload-inner cssload-three"
+  })])
+}]}
 
 /***/ }),
 
@@ -667,4 +679,4 @@ const config = {
 /***/ })
 
 },[126]);
-//# sourceMappingURL=app.5ff5092bc231bd9648f4.js.map
+//# sourceMappingURL=app.aba6063e72942946c810.js.map
