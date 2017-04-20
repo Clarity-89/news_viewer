@@ -1,6 +1,6 @@
 <template>
     <li>
-        <div class="collapsible-header" @click="toggle(category)">
+        <div class="collapsible-header" @click="toggle">
             {{category | cap}}
         </div>
         <div class="collapsible-body" v-bind:class="{active: open}">
@@ -33,13 +33,25 @@
         },
 
         methods: {
-            toggle(category) {
+            toggle() {
                 this.open = !this.open;
+                eventHub.$emit('toggle', {category: this.category});
             },
 
             setFilter(category, filter) {
                 eventHub.$emit('set-filter', {parent: category, filter: filter});
+            },
+
+            // Close current element (if open) when other collapsible has been opened
+            close({category}) {
+                if (category !== this.category) {
+                    this.open = false;
+                }
             }
+        },
+
+        created() {
+            eventHub.$on('toggle', this.close);
         }
     }
 </script>
@@ -75,11 +87,10 @@
         z-index: 6;
         background-color: $collapsible-body-background-color;
         overflow: hidden;
-        transition: max-height .7s ease-in-out;
+        transition: max-height .5s ease;
 
         &.active {
             max-height: 3000px;
-            transition: max-height .7s ease-in-out;
         }
 
         &__list {
