@@ -34,17 +34,12 @@
 
         methods: {
             toggle(category) {
-                console.log('got cat', category)
                 this.open = !this.open;
             },
 
             setFilter(category, filter) {
                 eventHub.$emit('set-filter', {parent: category, filter: filter});
             }
-        },
-
-        created() {
-            // console.log('cats', this.category, this.content)
         }
     }
 </script>
