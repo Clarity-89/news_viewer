@@ -3,15 +3,6 @@
         <div class="mdl-layout mdl-js-layout">
             <header class="mdl-layout__header mdl-layout__header--transparent">
                 <div class="mdl-layout__header-row">
-                    <!-- Add spacer, to align navigation to the right -->
-                    <div class="mdl-layout-spacer"></div>
-                    <!-- Navigation -->
-                    <nav class="mdl-navigation">
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
-                    </nav>
                 </div>
             </header>
             <sidebar></sidebar>
@@ -26,7 +17,6 @@
                 <p>Powered by <a href="https://newsapi.org">NewsAPI.org</a></p>
             </footer>
         </div>
-
     </div>
 </template>
 
