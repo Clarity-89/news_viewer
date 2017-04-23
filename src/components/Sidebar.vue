@@ -140,7 +140,7 @@
         &::before {
             content: '';
             position: absolute;
-            background: url('http://theiphonewalls.com/wp-content/uploads/2013/05/Dark-Blue.jpg') 0 / cover;
+            background: url('../assets/sidebar-back.jpg') 0 / cover;
             top: -20px;
             left: -20px;
             right: 0;
