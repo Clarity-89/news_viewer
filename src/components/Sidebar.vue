@@ -1,6 +1,6 @@
 <template>
     <div class="mdl-layout__drawer mdl-layout__drawer--custom">
-        <span class="mdl-layout-title">Sort by:
+        <span class="mdl-layout-title">Filter by:
             <button class="mdl-button mdl-js-button mdl-button--icon close-sidebar" @click="closeSidebar">
                 <i class="material-icons">clear</i>
             </button>
