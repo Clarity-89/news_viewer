@@ -56,16 +56,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -121,18 +111,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        toggle(category) {
-            console.log('got cat', category);
+        toggle() {
             this.open = !this.open;
+            __WEBPACK_IMPORTED_MODULE_0__services_eventHub__["a" /* default */].$emit('toggle', { category: this.category });
         },
 
         setFilter(category, filter) {
             __WEBPACK_IMPORTED_MODULE_0__services_eventHub__["a" /* default */].$emit('set-filter', { parent: category, filter: filter });
+        },
+
+        // Close current element (if open) when other collapsible has been opened
+        close({ category }) {
+            if (category !== this.category) {
+                this.open = false;
+            }
         }
     },
 
     created() {
-        // console.log('cats', this.category, this.content)
+        __WEBPACK_IMPORTED_MODULE_0__services_eventHub__["a" /* default */].$on('toggle', this.close);
     }
 });
 
@@ -471,7 +468,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "mdl-layout__drawer mdl-layout__drawer--custom"
   }, [_c('span', {
     staticClass: "mdl-layout-title"
-  }, [_vm._v("Sort by:\n        "), _c('button', {
+  }, [_vm._v("Filter by:\n        "), _c('button', {
     staticClass: "mdl-button mdl-js-button mdl-button--icon close-sidebar",
     on: {
       "click": _vm.closeSidebar
@@ -573,31 +570,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "mdl-layout__header mdl-layout__header--transparent"
   }, [_c('div', {
     staticClass: "mdl-layout__header-row"
-  }, [_c('div', {
-    staticClass: "mdl-layout-spacer"
-  }), _vm._v(" "), _c('nav', {
-    staticClass: "mdl-navigation"
-  }, [_c('a', {
-    staticClass: "mdl-navigation__link",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Link")]), _vm._v(" "), _c('a', {
-    staticClass: "mdl-navigation__link",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Link")]), _vm._v(" "), _c('a', {
-    staticClass: "mdl-navigation__link",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Link")]), _vm._v(" "), _c('a', {
-    staticClass: "mdl-navigation__link",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Link")])])])])
+  })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "mdl-layout__drawer-button",
@@ -628,9 +601,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('li', [_c('div', {
     staticClass: "collapsible-header",
     on: {
-      "click": function($event) {
-        _vm.toggle(_vm.category)
-      }
+      "click": _vm.toggle
     }
   }, [_vm._v("\n        " + _vm._s(_vm._f("cap")(_vm.category)) + "\n    ")]), _vm._v(" "), _c('div', {
     staticClass: "collapsible-body",
@@ -679,4 +650,4 @@ const config = {
 /***/ })
 
 },[126]);
-//# sourceMappingURL=app.aba6063e72942946c810.js.map
+//# sourceMappingURL=app.1a36f033c2ae481be4f1.js.map
