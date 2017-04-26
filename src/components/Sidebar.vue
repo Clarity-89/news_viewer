@@ -156,7 +156,7 @@
         .close-sidebar {
             position: absolute;
             right: .5em;
-            top: .7em;
+            top: .6em;
         }
     }
 

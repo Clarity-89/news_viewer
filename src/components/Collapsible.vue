@@ -68,6 +68,7 @@
         background-color: transparent;
         border-bottom: 1px solid $collapsible-border-color;
         z-index: 6;
+        padding-left: 40px;
 
         i {
             width: 2rem;
@@ -98,6 +99,7 @@
 
             li {
                 padding: .7em 1.7em;
+                padding-left: 40px;
                 border-bottom: 1px solid $sidenav-border-color;
 
                 &:hover {
