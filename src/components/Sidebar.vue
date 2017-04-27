@@ -151,6 +151,7 @@
 
         &.is-visible {
             transform: translateX(0);
+            overflow-x: hidden;
         }
 
         .close-sidebar {
