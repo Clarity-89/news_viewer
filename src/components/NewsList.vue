@@ -103,6 +103,7 @@
             window.fetch(`https://newsapi.org/v1/articles?source=ign&sortBy=top&apiKey=${config.apiKey}`)
                 .then(response => response.json())
                 .then(response => {
+                    response.articles.forEach(article => article.sourceName = response.source);
                     self.loading = false;
                     self.news = response.articles
                 });
