@@ -98,8 +98,7 @@
             padding: 0;
 
             li {
-                padding: .7em 1.7em;
-                padding-left: 40px;
+                padding: .7em 4em;
                 border-bottom: 1px solid $sidenav-border-color;
 
                 &:hover {
