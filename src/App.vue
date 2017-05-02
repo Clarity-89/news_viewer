@@ -40,7 +40,8 @@
     @import "../node_modules/material-design-lite/material.min.css";
 
     body, #app::before {
-        background: url("assets/background2.jpg");
+        background: url("assets/background2.jpg") center no-repeat;
+        background-size: cover;
     }
 
     .mdl-layout__container {
