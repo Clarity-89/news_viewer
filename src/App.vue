@@ -14,7 +14,10 @@
             </main>
 
             <footer class="footer">
-                <p>Powered by <a href="https://newsapi.org">NewsAPI.org</a></p>
+                <p class="footer-text">
+                    Powered by <a href="https://newsapi.org">NewsAPI.org</a>.
+                    View the source code on <a href="https://github.com/Clarity-89/news_viewer">Github</a>.
+                </p>
             </footer>
         </div>
     </div>
@@ -81,6 +84,9 @@
     }
 
     .footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 50px;
         background-color: black;
         text-align: center;
@@ -95,6 +101,10 @@
                 cursor: pointer;
                 text-decoration: underline;
             }
+        }
+
+        .footer-text {
+            margin: 0;
         }
     }
 </style>
