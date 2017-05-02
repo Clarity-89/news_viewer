@@ -5,7 +5,6 @@
                 <i class="material-icons">clear</i>
             </button>
         </span>
-
         <ul class="collapsible" data-collapsible="accordion">
             <collapsible v-for="(val, key) in filters" v-bind:category="key" v-bind:content="val"
                          :key="key"></collapsible>
@@ -34,10 +33,17 @@
                 let {filters} = this;
                 for (let filter of Object.keys(filters)) {
                     data.forEach(el => {
-                        filters[filter][el[filter]] = filters[filter][el[filter]] || [];
-                        filters[filter][el[filter]].push(el.id)
+                        if (filter === 'name') {
+                            let letter = el.name[0].toLowerCase();
+                            filters.name[letter] = filters.name[letter] || [];
+                            filters.name[letter].push({[el.id]: el.id});
+                        } else {
+                            filters[filter][el[filter]] = filters[filter][el[filter]] || [];
+                            filters[filter][el[filter]].push(el.id)
+                        }
                     });
                 }
+                console.log(this.filters.name)
                 this.filters = filters;
             },
 
