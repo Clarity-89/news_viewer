@@ -4,12 +4,14 @@
             {{category | cap}}
         </div>
         <div class="collapsible-body" v-bind:class="{active: open}">
-            <ul class="collapsible-body__list">
-                <collapsible v-if="content.a" v-for="(v, k) in content" v-bind:category="k" v-bind:content="v"
+            <ul v-if="content.a" class="collapsible-body__list">
+                <collapsible v-for="(v, k) in content" v-bind:category="k" v-bind:content="v"
                              :key="k"></collapsible>
+            </ul>
+            <ul v-else class="collapsible-body__list">
 
-                <li v-else v-for="(v, k) in content" :key="k" @click="setFilter(category, k)">
-                    {{k | cap}}
+                <li v-for="(v, k) in content" :key="k" @click="setFilter(category, k)">
+                    <div>{{k | cap}}</div>
                 </li>
             </ul>
         </div>
@@ -57,6 +59,7 @@
 
         created() {
             console.log('content', this.content)
+            console.log('cat',  this.category)
             eventHub.$on('toggle', this.close);
         }
     }

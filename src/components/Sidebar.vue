@@ -36,7 +36,7 @@
                         if (filter === 'name') {
                             let letter = el.name[0].toLowerCase();
                             filters.name[letter] = filters.name[letter] || [];
-                            filters.name[letter].push({[el.id]: el.id});
+                            filters.name[letter].push({[el.id]: [el.id]});
                         } else {
                             filters[filter][el[filter]] = filters[filter][el[filter]] || [];
                             filters[filter][el[filter]].push(el.id)
